@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
   <title>People</title>
@@ -7,13 +6,13 @@
 </head>
 <body>
   <h1>People</h1>
+  <button id="reload-button">Reload</button>
   <div id="people-list">
-    <%= render partial: "list", locals: { people: @people } %>
   </div>
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      fetchPeople();
+      document.getElementById('reload-button').addEventListener('click', fetchPeople);
     });
 
     function fetchPeople() {
@@ -24,7 +23,7 @@
           peopleList.innerHTML = '';
           data.forEach(person => {
             let personItem = document.createElement('div');
-            personItem.textContent = `${person.name} (${person.last_name})`;
+            personItem.textContent = `${person.first_name} ${person.last_name} (${person.email})`;
             peopleList.appendChild(personItem);
           });
         });

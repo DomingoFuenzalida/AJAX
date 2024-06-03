@@ -7,3 +7,12 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+# db/seeds.rb
+
+Person.create!([
+  { first_name: 'John', last_name: 'Doe', email: 'john.doe@example.com' },
+  { first_name: 'Jane', last_name: 'Smith', email: 'jane.smith@example.com' },
+  { first_name: 'Alice', last_name: 'Johnson', email: 'alice.johnson@example.com' },
+  { first_name: 'Bob', last_name: 'Brown', email: 'bob.brown@example.com' },
+  { first_name: 'Charlie', last_name: 'Davis', email: 'charlie.davis@example.com' }
+])
