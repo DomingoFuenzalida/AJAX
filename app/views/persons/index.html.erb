@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>People</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+</head>
+<body>
+  <h1>People</h1>
+  <div id="people-list">
+    <%= render partial: "list", locals: { people: @people } %>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      fetchPeople();
+    });
+
+    function fetchPeople() {
+      fetch('/people.json')
+        .then(response => response.json())
+        .then(data => {
+          let peopleList = document.getElementById('people-list');
+          peopleList.innerHTML = '';
+          data.forEach(person => {
+            let personItem = document.createElement('div');
+            personItem.textContent = `${person.name} (${person.last_name})`;
+            peopleList.appendChild(personItem);
+          });
+        });
+    }
+  </script>
+</body>
+</html>
